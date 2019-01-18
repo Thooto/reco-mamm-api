@@ -51,31 +51,49 @@ router.route('/questions')
             .catch(next);
     });
 
-    
+
 // Answers CRUD
 router.route('/answers')
-.post((req, res, next) => {
-    answers.create(req.body)
-        .then((question) => res.json(question))
-        .catch(next);
-})
-.get((req, res, next) => {
-    answers.read(req.query)
-        .then((question) => res.json(question))
-        .catch(next);
-});
+    .post((req, res, next) => {
+        answers.create(req.body)
+            .then((question) => res.json(question))
+            .catch(next);
+    })
+    .get((req, res, next) => {
+        answers.read(req.query)
+            .then((question) => res.json(question))
+            .catch(next);
+    });
 
-
-// Error interceptor
 router.use((err, req, res, next) => {
     console.error(err);
     res.status(500).send(err.message);
 });
 
-
-// 404 interceptor
 router.get('**', (req, res) => res.sendStatus(404));
 
-
-// Export the router
 module.exports = router;
+
+
+/*
+
+const express = require('express');
+
+const router = new express.Router();
+
+const { logError } = require.main.require('./utils');
+
+router.get('/', (req, res) => res.send('Expercancer API.'));
+
+router.use('/admin', require('./admin'));
+router.use('/user', require('./user'));
+
+
+router.use((err, req, res, next) => {
+    logError(err);
+    res.status(500).send(err.message);
+});
+
+module.exports = router;
+
+*/
