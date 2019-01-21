@@ -1,3 +1,8 @@
+module.exports.admin = require('./admin');
+module.exports.user = require('./user');
+
+/*
+
 // Dependencies
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
@@ -123,6 +128,8 @@ module.exports.answers = {
         });
     }
 }
+
+*/
 
 /*
 

@@ -1,10 +1,32 @@
-// Router dependencies
-const express = require('express');
-const { categories, questions, answers, authenticate } = require.main.require('./actions');
+const { Router } = require('express');
 
-// Define the router
-const router = new express.Router();
+const { logError } = require.main.require('./utils');
 
+const router = new Router();
+
+router.use('/user', require('./user'));
+router.use('/admin', require('./admin'));
+
+router.use((err, req, res, next) => {
+    logError(err);
+    res.status(500).send(err.message);
+});
+
+module.exports = router;
+
+/*
+
+router.post('/question', (req, res, next) => {
+    if (req.body.toto == 'tata') {
+        res.json({
+            next: 'answer'
+        });
+    } else {
+        res.json({
+            next: 'question'
+        })
+    }
+});
 
 // Register admin route
 router.route('/register')
@@ -74,6 +96,8 @@ router.get('**', (req, res) => res.sendStatus(404));
 
 module.exports = router;
 
+
+*/
 
 /*
 

@@ -7,11 +7,11 @@ const config = {
     },
     database: {
         dialect: 'postgres',
-        username: process.env.DB_USERNAME,
-        password: process.env.DB_PASSWORD,
-        host: process.env.DB_HOST,
+        username: process.env.PDB_USERNAME,
+        password: process.env.PDB_PASSWORD,
+        host: process.env.PDB_HOST,
         port: 5432,
-        database: process.env.DB_DATABASE,
+        database: process.env.PDB_DATABASE,
         dialectOptions: { ssl: true },
         logging: false
     }

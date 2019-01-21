@@ -5,7 +5,7 @@ const morgan = require('morgan');
 const config = require('./config');
 
 module.exports = (app) => {
-    if (config.env == 'dev') app.use(cors());
+    if (config.app.env == 'dev') app.use(cors());
 
     app.use(express.json());
     app.use(morgan(config.app.env));
@@ -14,7 +14,5 @@ module.exports = (app) => {
 
     app.use('/api', require.main.require('./routes'));
 
-    app.use('/**', (req, res) => {
-        res.sendFile('dist/index.html', { root: './' });
-    });
+    app.use('/**', (req, res) => res.sendFile('dist/index.html', { root: './' }));
 };
