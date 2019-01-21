@@ -1,6 +1,6 @@
 const { Category, Question, Answer } = require.main.require('./models');
 
-module.exports = async () => {
+const get = async () => {
     let categories = await Category.findAll();
 
     categories = categories.map(({ dataValues }) => ({
@@ -33,3 +33,7 @@ module.exports = async () => {
 
     return categories;
 };
+
+get();
+
+module.exports = get;
