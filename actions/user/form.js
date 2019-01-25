@@ -1,6 +1,34 @@
 const { Category, Question, Answer } = require.main.require('./models');
 
-const get = async () => {
+const get2 = async () => {
+    console.time('get2');
+
+    const form = await Category.findAll({
+        include: {
+            model: Question,
+            include: Answer
+        }
+    });
+
+    console.timeEnd('get2');
+
+    for (const category of form) {
+        console.log('Category');
+        console.log(category.get());
+        for (const question of category.questions) {
+            console.log('  Question');
+            console.log(question.get());
+            for (const answer of question.answers) {
+                console.log('    Answer');
+                console.log(answer.get());
+            }
+        }
+    }
+};
+
+get2();
+
+module.exports.get = async () => {
     let categories = await Category.findAll();
 
     categories = categories.map(({ dataValues }) => ({
@@ -33,7 +61,3 @@ const get = async () => {
 
     return categories;
 };
-
-get();
-
-module.exports = get;
