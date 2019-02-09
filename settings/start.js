@@ -7,7 +7,7 @@ const config = require('./config');
 module.exports = (app) => {
     logInfo(`Starting app in ${config.app.env} mode.`);
 
-    sequelize.sync()
+    sequelize.sync({ force: false })
         .then(() => {
             logInfo('Successful sync with the database!');
 
