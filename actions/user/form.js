@@ -1,39 +1,18 @@
 const { Category, Question, Answer } = require.main.require('./models');
 
-const get = async () => {
-    let categories = await Category.findAll();
+module.exports.get = async () => {
+    const form = await Category.findAll({
+        order: ['index'],
+        include: { model: Question, include: { model: Answer } }
+    });
 
-    categories = categories.map(({ dataValues }) => ({
-        id: dataValues.id,
-        name: dataValues.name
-    }));
+    return form.map(category => {
+        const questions = category.questions.map(question => {
+            const answers = question.answers.map(answer => answer.get()).sort((a, b) => a.index > b.index);
 
-    for (let category of categories) {
-        const questions = await Question.findAll({ where: { categoryId: category.id } });
+            return { ...question.get(), answers };
+        }).sort((a, b) => a.index > b.index);
 
-        category.questions = questions.map(({ dataValues }) => ({
-            id: dataValues.id,
-            name: dataValues.name,
-            categoryId: dataValues.categoryId
-        }));
-
-        for (let question of category.questions) {
-            const answers = await Answer.findAll({ where: { questionId: question.id } });
-
-            question.answers = answers.map(({ dataValues }) => ({
-                id: dataValues.id,
-                name: dataValues.name,
-                code: dataValues.code,
-                next: dataValues.next
-            }));
-        }
-    }
-
-    // console.log(require('util').inspect(categories, false, null, true));
-
-    return categories;
+        return { ...category.get(), questions };
+    });
 };
-
-get();
-
-module.exports = get;
