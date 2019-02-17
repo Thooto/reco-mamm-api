@@ -11,7 +11,7 @@ const checkUser = async (req, res, next) => {
 
         const token = header.split(' ')[1];
 
-        req.token = await jwt.verify(token, config.secret);
+        req.token = await jwt.verify(token, config.app.secret);
 
         next();
     } catch (error) {

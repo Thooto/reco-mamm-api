@@ -3,7 +3,7 @@ const config = {
         port: process.env.PORT,
         env: process.env.NODE_ENV,
         secret: process.env.SECRET,
-        saltRounds: process.env.SALT_ROUNDS
+        saltRounds: parseInt(process.env.SALT_ROUNDS)
     },
     database: {
         dialect: 'postgres',

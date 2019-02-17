@@ -1,6 +1,14 @@
 module.exports = async () => {
-    const { Answer, Question, Category } = require.main.require('./models');
+    const { Answer, Question, Category, Admin } = require.main.require('./models');
     const faker = require('faker');
+
+
+
+
+    await Admin.create({
+        email: "freyal@gmail.com",
+        password: "fabienreyal"
+    });
 
     let categoryIndex = 1;
 
