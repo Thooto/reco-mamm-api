@@ -6,7 +6,7 @@ const { config } = require.main.require('./settings');
 const { sequelize } = require('./');
 
 const Admin = sequelize.define('admin', {
-    username: { type: Sequelize.STRING, unique: true },
+    email: { type: Sequelize.STRING, unique: true },
     password: Sequelize.STRING
 });
 

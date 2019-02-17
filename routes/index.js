@@ -1,6 +1,6 @@
 const { Router } = require('express');
 
-const { logError } = require.main.require('./utils');
+const { logError, checkAdmin } = require.main.require('./utils');
 
 const router = new Router();
 
