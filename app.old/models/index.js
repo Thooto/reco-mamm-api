@@ -13,7 +13,7 @@ const Answer = require('./answer');
 Category.hasMany(Question);
 Question.hasMany(Answer);
 
-Answer.belongsToMany(User, { through: 'useranswers' });
+// Answer.belongsToMany(User, { through: 'useranswers' });
 
 module.exports.Category = Category;
 module.exports.Question = Question;

@@ -10,16 +10,16 @@ module.exports = async () => {
         password: "fabienreyal"
     });
 
-    let categoryIndex = 1;
+    let categoryIndex = 0;
 
     const categories = new Array(6).fill().map(() => {
-        let questionIndex = 1;
+        let questionIndex = 0;
 
         return {
             index: categoryIndex++,
             name: faker.lorem.sentence(),
             questions: new Array(6).fill().map(() => {
-                let answerIndex = 1;
+                let answerIndex = 0;
 
                 return {
                     name: faker.lorem.sentence(),

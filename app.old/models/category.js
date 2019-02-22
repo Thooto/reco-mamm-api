@@ -5,7 +5,7 @@ const { sequelize } = require('./');
 module.exports = sequelize.define('category', {
     index: {
         type: Sequelize.INTEGER,
-        unique: true,
+        // unique: true,
         allowNull: false
     },
     name: {

@@ -11,5 +11,6 @@ module.exports = sequelize.define('user', {
     visited: {
         type: Sequelize.DATE,
         allowNull: true
-    }
+    },
+    answers: Sequelize.ARRAY(Sequelize.INTEGER)
 });

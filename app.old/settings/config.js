@@ -1,9 +1,16 @@
 const config = {
+    web: {
+        host: process.env.HOST
+    },
+    api: {
+        host: `api.${process.env.HOST}`
+    },
     app: {
         port: process.env.PORT,
         env: process.env.NODE_ENV,
         secret: process.env.SECRET,
-        saltRounds: parseInt(process.env.SALT_ROUNDS)
+        saltRounds: parseInt(process.env.SALT_ROUNDS),
+        tokenExpiration: process.env.NODE_ENV == 'dev' ? '24h' : '1h'
     },
     database: {
         dialect: 'postgres',
