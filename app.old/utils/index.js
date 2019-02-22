@@ -1,4 +1,3 @@
-
 module.exports.checkUser = require('./check').checkUser;
 module.exports.checkAdmin = require('./check').checkAdmin;
 

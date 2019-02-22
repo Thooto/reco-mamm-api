@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "NODE_ENV=production node index.js",
+    "start": "NODE_ENV=production node -r esm index.js",
     "dev": "NODE_ENV=dev nodemon"
   },
   "repository": {
@@ -24,6 +24,7 @@
     "chalk": "^2.4.2",
     "cors": "^2.8.5",
     "dotenv": "^6.2.0",
+    "esm": "^3.2.5",
     "express": "^4.16.4",
     "faker": "^4.1.0",
     "jsonwebtoken": "^8.4.0",
@@ -31,6 +32,7 @@
     "morgan": "^1.9.1",
     "pg": "^7.8.0",
     "pg-hstore": "^2.3.2",
+    "randomstring": "^1.1.5",
     "sequelize": "^4.42.0",
     "vhost": "^3.0.2"
   },

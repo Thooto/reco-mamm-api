@@ -1,10 +1,12 @@
-const config = {
+module.exports = {
     web: {
         host: process.env.HOST
     },
+
     api: {
         host: `api.${process.env.HOST}`
     },
+
     app: {
         port: process.env.PORT,
         env: process.env.NODE_ENV,
@@ -12,6 +14,7 @@ const config = {
         saltRounds: parseInt(process.env.SALT_ROUNDS),
         tokenExpiration: process.env.NODE_ENV == 'dev' ? '24h' : '1h'
     },
+
     database: {
         dialect: 'postgres',
         username: process.env.PDB_USERNAME,
@@ -22,6 +25,4 @@ const config = {
         dialectOptions: { ssl: true },
         logging: false
     }
-};
-
-module.exports = config;
+}

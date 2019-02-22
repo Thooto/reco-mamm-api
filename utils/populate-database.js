@@ -1,9 +1,11 @@
+const { Answer, Question, Category, Admin, User } = require.main.require('./models');
+
 module.exports = async () => {
-    const { Answer, Question, Category, Admin } = require.main.require('./app.old/models');
     const faker = require('faker');
 
-
-
+    await User.create({
+        email: 'qlanta@gmail.com'
+    });
 
     await Admin.create({
         email: "freyal@gmail.com",

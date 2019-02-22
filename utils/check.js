@@ -1,15 +1,15 @@
 const jwt = require('jsonwebtoken');
 const { logError } = require('./log');
-const { config } = require.main.require('./settings');
+const config = require.main.require('./config');
 
 
-const checkUser = async (req, res, next) => {
+const checkHeaders = async (req, res, next) => {
     try {
-        const header = req.headers.authorization;
+        const headers = req.headers.authorization;
 
-        if (!header) throw Error('Header not provided');
+        if (!headers) throw Error('Headers not provided');
 
-        const token = header.split(' ')[1];
+        const token = headers.split(' ')[1];
 
         req.token = await jwt.verify(token, config.app.secret);
 
@@ -20,12 +20,12 @@ const checkUser = async (req, res, next) => {
     }
 };
 
-module.exports.checkUser = checkUser;
+module.exports.checkHeaders = checkHeaders;
 
 module.exports.checkAdmin = (req, res, next) => {
-    checkUser(req, res, () => {
+    checkHeaders(req, res, () => {
         try {
-            if (!req.token.adminId) throw Error('Unauthorized');
+            if (!req.token.admin) throw Error('Unauthorized');
 
             next();
         } catch (error) {
