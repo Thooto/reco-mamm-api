@@ -6,7 +6,7 @@ const { admin } = require.main.require('./actions');
 
 router.post('/', (req, res, next) => {
     admin.category.create(req.body)
-        .then(() => res.json())
+        .then((category) => res.json({ category }))
         .catch(next);
 });
 
@@ -18,12 +18,18 @@ router.get('/', (req, res, next) => {
 
 router.patch('/', (req, res, next) => {
     admin.category.update(req.body)
-        .then((category) => res.json(category))
+        .then(() => res.json())
         .catch(next);
 });
 
-router.delete('/', (req, res, next) => {
-    admin.category.delete(req.body)
+router.patch('/order', (req, res, next) => {
+    admin.category.order(req.body)
+        .then(() => res.json())
+        .catch(next);
+});
+
+router.delete('/:index', (req, res, next) => {
+    admin.category.delete(req.params)
         .then((category) => res.json(category))
         .catch(next);
 });

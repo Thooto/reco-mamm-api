@@ -15,5 +15,5 @@ module.exports = async (body) => {
 
     if (!matches) throw Error('Wrong password');
 
-    return await jwt.sign({ adminId: admin.id }, config.app.secret, { expiresIn: '1h' });
+    return await jwt.sign({ adminId: admin.id }, config.app.secret, { expiresIn: config.app.tokenExpiration });
 };

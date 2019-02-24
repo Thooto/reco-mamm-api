@@ -11,6 +11,4 @@ module.exports = sequelize.define('question', {
         type: Sequelize.INTEGER,
         allowNull: false
     }
-}, {
-    timestamps: false
 });

@@ -18,4 +18,6 @@ module.exports = sequelize.define('answer', {
     explanation: {
         type: Sequelize.TEXT
     }
+}, {
+    timestamps: false
 });

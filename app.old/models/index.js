@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 
-const config = require.main.require('./config');
+const { config } = require.main.require('./settings');
 
 module.exports.sequelize = new Sequelize(config.database);
 
@@ -11,14 +11,9 @@ const Question = require('./question');
 const Answer = require('./answer');
 
 Category.hasMany(Question);
-Question.belongsTo(Category);
-
 Question.hasMany(Answer);
-Answer.belongsTo(Question);
 
-Answer.belongsTo(Question, { as: 'next' });
-
-// Answer.belongsToMany(User, { through: 'useranswers' })
+// Answer.belongsToMany(User, { through: 'useranswers' });
 
 module.exports.Category = Category;
 module.exports.Question = Question;
