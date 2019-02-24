@@ -5,6 +5,7 @@ const { sequelize } = require('./');
 module.exports = sequelize.define('category', {
     index: {
         type: Sequelize.INTEGER,
+        // unique: true,
         allowNull: false
     },
     name: {
@@ -12,6 +13,4 @@ module.exports = sequelize.define('category', {
         unique: true,
         allowNull: false
     }
-}, {
-    timestamps: false
 });

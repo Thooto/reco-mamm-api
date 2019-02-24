@@ -1,15 +1,13 @@
 const Sequelize = require('sequelize');
 const bcrypt = require('bcrypt');
 
-const config = require.main.require('./config');
+const { config } = require.main.require('./settings');
 
 const { sequelize } = require('./');
 
 const Admin = sequelize.define('admin', {
     email: { type: Sequelize.STRING, unique: true },
     password: Sequelize.STRING
-}, {
-    timestamps: false
 });
 
 Admin.beforeCreate(async (admin) => {
