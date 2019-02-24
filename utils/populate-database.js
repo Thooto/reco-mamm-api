@@ -8,19 +8,19 @@ module.exports = async () => {
     });
 
     await Admin.create({
-        email: "freyal@gmail.com",
-        password: "fabienreyal"
+        email: "fabien@gmail.com",
+        password: "fabien"
     });
 
     let categoryIndex = 0;
 
-    const categories = new Array(6).fill().map(() => {
+    const categories = new Array(2).fill().map(() => {
         let questionIndex = 0;
 
         return {
             index: categoryIndex++,
             name: faker.lorem.sentence(),
-            questions: new Array(6).fill().map(() => {
+            questions: new Array(2).fill().map(() => {
                 let answerIndex = 0;
 
                 return {

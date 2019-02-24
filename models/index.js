@@ -11,9 +11,14 @@ const Question = require('./question');
 const Answer = require('./answer');
 
 Category.hasMany(Question);
-Question.hasMany(Answer);
+Question.belongsTo(Category);
 
-// Answer.belongsToMany(User, { through: 'useranswers' });
+Question.hasMany(Answer);
+Answer.belongsTo(Question);
+
+Answer.belongsTo(Question, { as: 'next' });
+
+// Answer.belongsToMany(User, { through: 'useranswers' })
 
 module.exports.Category = Category;
 module.exports.Question = Question;

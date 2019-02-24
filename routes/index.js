@@ -9,13 +9,13 @@ const { readForm, createAnswers } = require.main.require('./actions');
 router
   .get('/form', (req, res, next) => {
     readForm()
-      .then((form) => res.json(form))
+      .then((form) => res.json({ form }))
       .catch(next);
   })
 
   .post('/answers', (req, res, next) => {
     createAnswers(req.body)
-      .then((user) => res.json(user))
+      .then((user) => res.json({ user }))
       .catch(next);
   })
 
@@ -27,7 +27,7 @@ router
 
   .use((err, req, res, next) => {
     logError(err);
-    res.status(500).json(err);
+    res.status(500).json(err.message);
   });
 
 module.exports = router;

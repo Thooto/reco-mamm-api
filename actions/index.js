@@ -4,7 +4,6 @@ const { orderForm } = require.main.require('./utils');
 
 module.exports.readForm = async () => {
   const form = await Category.findAll({
-    order: ['index'],
     include: { model: Question, include: { model: Answer } }
   });
 
@@ -18,6 +17,6 @@ module.exports.createAnswers = async ({ email, answers }) => {
   });
 };
 
-module.login = require('./login');
-module.user = require('./user');
-module.admin = require('./admin');
+module.exports.login = require('./login');
+module.exports.user = require('./user');
+module.exports.admin = require('./admin');
