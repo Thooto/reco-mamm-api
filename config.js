@@ -7,6 +7,10 @@ module.exports = {
         host: `api.${process.env.HOST}`
     },
 
+    admin: {
+        host: `admin.${process.env.HOST}`
+    },
+
     app: {
         port: process.env.PORT,
         env: process.env.NODE_ENV,
