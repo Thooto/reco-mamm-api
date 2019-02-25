@@ -1,14 +1,8 @@
 module.exports = {
-    web: {
-        host: process.env.HOST
-    },
-
-    api: {
-        host: `api.${process.env.HOST}`
-    },
-
-    admin: {
-        host: `admin.${process.env.HOST}`
+    hosts: {
+        web: process.env.HOST,
+        api: `api.${process.env.HOST}`,
+        admin: `admin.${process.env.HOST}`
     },
 
     app: {
